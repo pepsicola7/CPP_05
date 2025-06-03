@@ -6,9 +6,21 @@
 /*   By: peli <peli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:29:35 by peli              #+#    #+#             */
-/*   Updated: 2025/05/30 16:29:55 by peli             ###   ########.fr       */
+/*   Updated: 2025/06/03 12:12:44 by peli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include " Bureaucrat.hpp"
 
+int main()
+{
+    try
+    {
+        /* code */
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+}
