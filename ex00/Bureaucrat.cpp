@@ -6,7 +6,7 @@
 /*   By: peli <peli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:29:59 by peli              #+#    #+#             */
-/*   Updated: 2025/06/05 17:35:20 by peli             ###   ########.fr       */
+/*   Updated: 2025/06/04 14:24:46 by peli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,4 @@ std::string    Bureaucrat::getName() const
 int    Bureaucrat::getGrade() const
 {
     return (this->Grade);
-};
-
-void    Bureaucrat::signForm(Form& Form)
-{
-    try 
-    {
-        Form.beSigned(*this);
-        std::cout << getName() << " signed " << Form.getname() << std::endl;
-    }
-    catch (std::exception& e) 
-    {
-        std::cout << getName() << " couldn’t sign " << Form.getname() << " because " << e.what() << std::endl;
-    }
 };

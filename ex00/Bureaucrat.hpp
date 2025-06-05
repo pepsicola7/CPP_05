@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    Bureaucrat.hpp                                    :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peli <peli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:30:03 by peli              #+#    #+#             */
-/*   Updated: 2025/06/03 16:42:07 by peli             ###   ########.fr       */
+/*   Updated: 2025/06/04 12:02:33 by peli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,25 @@ class Bureaucrat
     ~Bureaucrat();
     Bureaucrat(const Bureaucrat &other);
     Bureaucrat& operator = (const Bureaucrat& other);
-    void    increment_grade(int& Grade);
-    void    decrement_grade(int& Grade);
+    void    increment_grade();
+    void    decrement_grade();
     std::string    getName() const;
+    int    getGrade() const;
     
     class GradeTooHighException : public std::exception
     {
-    public :
-        const char* what() const noexcept override 
-        {
-            return "Grade too high!";
-        }
+        public :
+            virtual const char* what() const throw()
+            {
+                return "Grade too high!";
+            }
     };
     class GradeTooLowException : public std::exception
     {
     public :
-        const char* what() const noexcept override 
+        virtual const char* what() const throw()
         {
             return "Grade too low!";
         }
     };
-    int    getGrade() const;
 };

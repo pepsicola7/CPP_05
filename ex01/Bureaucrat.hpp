@@ -6,7 +6,7 @@
 /*   By: peli <peli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:30:03 by peli              #+#    #+#             */
-/*   Updated: 2025/06/04 19:51:23 by peli             ###   ########.fr       */
+/*   Updated: 2025/06/05 17:35:20 by peli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Bureaucrat
     void    decrement_grade();
     std::string    getName() const;
     int    getGrade() const;
-    void    signForm(Form& form);
+    void    signForm(Form& Form);
     
     class GradeTooHighException : public std::exception
     {
