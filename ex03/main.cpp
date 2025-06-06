@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peiqi <peiqi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 17:12:37 by peli              #+#    #+#             */
-/*   Updated: 2025/06/06 16:34:36 by peiqi            ###   ########.fr       */
+/*   Created: 2025/06/05 14:19:02 by peli              #+#    #+#             */
+/*   Updated: 2025/06/06 16:39:41 by peiqi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include "Intern.hpp"
+#include <iostream>
 
-class PresidentialPardonForm: public AForm
+int main()
 {
-private:
-    std::string Target;
-public:
-    PresidentialPardonForm(std::string target);
-    ~PresidentialPardonForm();
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeAForm("robotomy request", "Bender");
+	if (rrf != NULL)
+		std::cout << rrf->getname() <<std::endl;
+}
 
-    void execute(Bureaucrat const & executor) const;
-};
 

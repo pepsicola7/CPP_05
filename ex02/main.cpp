@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peli <peli@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: peiqi <peiqi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 14:19:02 by peli              #+#    #+#             */
-/*   Updated: 2025/06/05 17:57:27 by peli             ###   ########.fr       */
+/*   Updated: 2025/06/06 16:34:36 by peiqi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,44 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include <iostream>
 
 int main() {
-    try {
-        Bureaucrat alice("Alice", 1); // Grade 1 (can do everything)
-        Bureaucrat bob("Bob", 140);   // Too low for most
-        Bureaucrat charlie("Charlie", 50); // OK for robotomy
+    std::cout << "--- Creating Bureaucrats ---" << std::endl;
+    Bureaucrat bob("Bob", 150);             // trop bas pour tout
+    Bureaucrat alice("Alice", 1);           // top grade
+    Bureaucrat charlie("Charlie", 45);      // suffisant pour RobotomyRequestForm
+    Bureaucrat ford("Ford Prefect", 5);     // suffisant pour PresidentialPardonForm
 
-        ShrubberyCreationForm shrub("garden");
-        RobotomyRequestForm robot("Bender");
-        PresidentialPardonForm pardon("Ford Prefect");
+    std::cout << "\n--- Creating AForms ---" << std::endl;
+    ShrubberyCreationForm shrub("garden");
+    RobotomyRequestForm robot("Marvin");
+    PresidentialPardonForm pardon("Ford Prefect");
 
-        std::cout << "\n--- Trying to sign with Bob (too low) ---\n";
-        bob.signForm(shrub);
-        bob.signForm(robot);
-        bob.signForm(pardon);
+    std::cout << "\n--- Trying to sign with Bob (too low) ---" << std::endl;
+    bob.signAForm(shrub);
+    bob.signAForm(robot);
+    bob.signAForm(pardon);
 
-        std::cout << "\n--- Signing with Alice ---\n";
-        alice.signForm(shrub);
-        alice.signForm(robot);
-        alice.signForm(pardon);
+    std::cout << "\n--- Signing with Alice ---" << std::endl;
+    alice.signAForm(shrub);
+    alice.signAForm(robot);
+    alice.signAForm(pardon);
 
-        std::cout << "\n--- Executing forms ---\n";
-        bob.executeForm(shrub);      // Should fail (exec grade too low)
-        charlie.executeForm(robot);  // May succeed
-        alice.executeForm(pardon);   // Should succeed
+    std::cout << "\n--- Executing AForms ---" << std::endl;
+    bob.executeAForm(shrub);     // trop bas
+    charlie.executeAForm(robot); // suffisant pour exec mais pas forcément signé ?
+    ford.executeAForm(pardon);   // suffisant si signé
 
-        std::cout << "\n--- Executing shrubbery form with Alice ---\n";
-        alice.executeForm(shrub);    // Should succeed
+    std::cout << "\n--- Executing shrubbery AForm with Alice ---" << std::endl;
+    alice.executeAForm(shrub);   // devrait créer le fichier et afficher success
 
-    } catch (const std::exception &e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
+    std::cout << "\n--- Testing Robotomy multiple times ---" << std::endl;
+    for (int i = 0; i < 5; ++i) {
+        alice.executeAForm(robot);  // 50% chance de réussite
     }
 
     return 0;
 }
+
 
