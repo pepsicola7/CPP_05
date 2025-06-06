@@ -6,7 +6,7 @@
 /*   By: peiqi <peiqi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 14:19:02 by peli              #+#    #+#             */
-/*   Updated: 2025/06/06 16:39:41 by peiqi            ###   ########.fr       */
+/*   Updated: 2025/06/06 16:41:25 by peiqi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int main()
 	AForm* rrf;
 	rrf = someRandomIntern.makeAForm("robotomy request", "Bender");
 	if (rrf != NULL)
+	{
 		std::cout << rrf->getname() <<std::endl;
+		delete rrf;
+	}
 }
 
 
